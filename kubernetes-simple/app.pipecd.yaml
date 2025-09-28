@@ -1,7 +1,7 @@
 apiVersion: pipecd.dev/v1beta1
 kind: KubernetesApp
 spec:
-  name: simple
+  name: simple-old
   labels:
     env: example
     team: product
