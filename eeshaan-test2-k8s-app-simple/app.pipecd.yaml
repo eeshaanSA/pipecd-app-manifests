@@ -1,0 +1,20 @@
+apiVersion: pipecd.dev/v1beta1
+kind: KubernetesApp
+spec:
+  name: simple-old
+  labels:
+    env: example
+    team: product
+  input:
+    manifests:
+      - deployment.yaml
+    kubectlVersion: 1.32.2
+  pipeline:
+    stages:
+      - name: K8S_CANARY_ROLLOUT
+        with:
+          replicas: 50%   # roll out to 1 of 2 replicas
+      - name: WAIT
+        with:
+          duration: 1m    # wait for 1 minute
+      - name: K8S_PRIMARY_ROLLOUT

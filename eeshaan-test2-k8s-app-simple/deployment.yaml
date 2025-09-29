@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-old
+  labels:
+    app: simple-old
+    env: example
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simple-old
+  template:
+    metadata:
+      labels:
+        app: simple-old
+    spec:
+      containers:
+        - name: simple-old
+          image: nginx:1.27.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: WELCOME_MESSAGE
+              value: "Hello from PipeCD learning!"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
