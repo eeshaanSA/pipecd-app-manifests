@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-old
+  name: simple-advanced
   labels:
-    app: simple-old
+    app: simple-advanced
     env: example
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: simple-old
+      app: simple-advanced
   template:
     metadata:
       labels:
-        app: simple-old
+        app: simple-advanced
     spec:
       containers:
-        - name: simple-old
+        - name: simple-advanced
           image: nginx:1.27.0
           ports:
             - containerPort: 8080
