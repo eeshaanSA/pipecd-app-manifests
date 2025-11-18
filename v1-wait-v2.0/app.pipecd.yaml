@@ -1,7 +1,7 @@
 apiVersion: pipecd.dev/v1beta1
 kind: Application
 spec:
-  name: v1-advanced-eeshaan
+  name: v1-wait-eeshaan
   labels:
     owner: eeshaansa
     env: local
@@ -9,6 +9,6 @@ spec:
     alwaysUsePipeline: true
   pipeline:
     stages:
-      - name: EXAMPLE_HELLO
+      - name: WAIT
         with:
-          name: Eeshaan
+          duration: 30s
