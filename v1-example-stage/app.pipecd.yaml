@@ -1,7 +1,7 @@
 apiVersion: pipecd.dev/v1beta1
 kind: Application
 spec:
-  name: v1-advanced-eeshaan
+  name: v1-example-stage
   labels:
     owner: eeshaansa
     env: local
