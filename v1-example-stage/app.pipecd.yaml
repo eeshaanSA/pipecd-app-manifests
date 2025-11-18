@@ -1,0 +1,14 @@
+apiVersion: pipecd.dev/v1beta1
+kind: Application
+spec:
+  name: v1-advanced-eeshaan
+  labels:
+    owner: eeshaansa
+    env: local
+  planner:
+    alwaysUsePipeline: true
+  pipeline:
+    stages:
+      - name: EXAMPLE_HELLO
+        with:
+          duration: 30s
